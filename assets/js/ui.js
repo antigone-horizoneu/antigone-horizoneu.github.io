@@ -65,7 +65,22 @@
       '      <ol class="steps">' +
       '        <li>Open <a href="' + esc(cfg.tokenDocsUrl) + '" target="_blank" rel="noopener">GitHub &rarr; fine-grained personal access tokens</a>.</li>' +
       '        <li>Set <strong>Resource owner</strong> to <code>' + esc(cfg.org) + '</code>.</li>' +
-      '        <li>Under repository permissions grant <code>Contents: Read and write</code> and <code>Metadata: Read-only</code>.</li>' +
+      '        <li>Under repository permissions grant <code>Contents: Read and write</code> and <code>Metadata: Read-only</code>.' +
+'          <figure class="perms">' +
+'            <div class="perms__bar"><span><b>Repositories</b> 2</span><span>Organizations 0</span></div>' +
+'            <div class="perms__row">' +
+'              <div><p class="perms__name">Contents</p>' +
+'              <p class="perms__desc">Repository contents, commits, branches, downloads, releases, and merges.</p></div>' +
+'              <span class="perms__pill">Access: Read and write</span>' +
+'            </div>' +
+'            <div class="perms__row">' +
+'              <div><p class="perms__name">Metadata <span class="perms__req">Required</span></p>' +
+'              <p class="perms__desc">Search repositories, list collaborators, and access repository metadata.</p></div>' +
+'              <span class="perms__pill">Access: Read-only</span>' +
+'            </div>' +
+'            <figcaption>How the two permissions look once set.</figcaption>' +
+'          </figure>' +
+'        </li>' +
       '        <li>Generate the token and paste it below.</li>' +
       '      </ol>' +
       '      <div class="notice notice--error" data-error hidden></div>' +
