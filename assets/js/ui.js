@@ -177,7 +177,7 @@
     document.querySelectorAll("[data-auth-slot]").forEach(function (slot) {
       slot.innerHTML = "";
       if (state.role === "none") {
-        var btn = h('<button class="btn btn--ghost btn--small" type="button">Members</button>');
+        var btn = h('<button class="btn btn--ghost btn--small" type="button">Log in</button>');
         btn.addEventListener("click", function () { ui.openSignIn("signin"); });
         slot.appendChild(btn);
         return;

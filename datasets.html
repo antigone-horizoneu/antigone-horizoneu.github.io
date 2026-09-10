@@ -15,37 +15,40 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="shell site-header__bar">
+<aside class="sidebar">
+  <div class="sidebar__top">
     <a class="wordmark" href="index.html">Antigone</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="site-nav" id="site-nav" aria-label="Primary">
-      <ul>
-        <li><a href="index.html">Project</a></li>
-        <li><a href="consortium.html">Consortium</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="tools.html">Research tools</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a class="is-private" href="datasets.html" aria-current="page">Datasets</a></li>
-      </ul>
-    </nav>
-    <div data-auth-slot></div>
   </div>
-</header>
 
+  <nav class="site-nav" id="site-nav" aria-label="Primary">
+    <ul>
+      <li><a href="index.html">Project</a></li>
+      <li><a href="consortium.html">Consortium</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="tools.html">Research tools</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="media.html">Media</a></li>
+      <li><a class="is-private" href="datasets.html" aria-current="page">Datasets</a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar__auth" data-auth-slot></div>
+</aside>
+
+<div class="canvas">
 <main id="main">
 
 <section class="page-head">
   <div class="shell">
-    <p class="eyebrow">Members area</p>
     <h1>Datasets</h1>
     <p data-editable="datasets.intro">Datasets produced or curated by the consortium. Most are shared inside the consortium only; selected datasets are released publicly.</p>
   </div>
 </section>
 
-<section class="gate shell" data-gate hidden>
+<section class="gate" data-gate hidden>
+  <div class="shell">
   <div class="gate__box">
     <p class="eyebrow">Restricted</p>
     <h2>Sign in to view the dataset register</h2>
@@ -55,10 +58,13 @@
       <button class="btn btn--ghost" type="button" data-signin-trigger="request">Request access</button>
     </div>
   </div>
+  </div>
 </section>
 
-<section class="section shell" data-gated hidden>
+<section class="section" data-gated hidden>
+  <div class="shell">
   <div data-collection="datasets"></div>
+  </div>
 </section>
 </main>
 
@@ -67,7 +73,7 @@
     <div class="footer-grid">
       <div>
         <h3>ANTIGONE</h3>
-        <p style="margin:0;max-width:40ch">from ANTagonIsm to aGOnism iN digital Ecosystems. A Horizon Europe research and innovation action on freedom of expression, disinformation and democratic disagreement.</p>
+        <p style="margin:0;max-width:40ch">A Horizon Europe research and innovation action on freedom of expression, disinformation and democratic disagreement.</p>
       </div>
       <div>
         <h3>Sections</h3>
@@ -89,7 +95,7 @@
           <li><a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/projects-details/43108390/101287848/HORIZON" target="_blank" rel="noopener">EU Funding &amp; Tenders Portal</a></li>
           <li><a href="https://www.vub.be/nl" target="_blank" rel="noopener">Vrije Universiteit Brussel</a></li>
           <li><a href="https://github.com/antigone-horizoneu" target="_blank" rel="noopener">GitHub organisation</a></li>
-          <li><a href="#" data-signin-trigger="signin">Members sign in</a></li>
+          <li><a href="#" data-signin-trigger="signin">Log in</a></li>
         </ul>
       </div>
     </div>
@@ -102,6 +108,7 @@
     <p class="colophon">&copy; 2026 ANTIGONE consortium &middot; Coordinated by Vrije Universiteit Brussel</p>
   </div>
 </footer>
+</div>
 
 <script src="assets/js/config.js"></script>
 <script src="assets/js/gh.js"></script>

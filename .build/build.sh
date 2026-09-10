@@ -23,7 +23,7 @@ build_page() {
   print "  wrote $out"
 }
 
-build_page index        index.html        "ANTIGONE — from ANTagonIsm to aGOnism iN digital Ecosystems" "A Horizon Europe project on freedom of expression, disinformation and the institutional and technological conditions of democratic disagreement." HOME
+build_page index        index.html        "ANTIGONE — from AntagonIsm to Agonism in Digital Ecosystems" "A Horizon Europe project on freedom of expression, disinformation and the institutional and technological conditions of democratic disagreement." HOME
 build_page consortium   consortium.html   "Consortium — ANTIGONE" "The ten organisations across six countries that make up the ANTIGONE consortium." CONS
 build_page people       people.html       "People — ANTIGONE" "Researchers and staff working on ANTIGONE." PEOP
 build_page projects     projects.html     "Projects — ANTIGONE" "Work packages, case studies and sub-projects within ANTIGONE." PROJ

@@ -15,24 +15,27 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="shell site-header__bar">
+<aside class="sidebar">
+  <div class="sidebar__top">
     <a class="wordmark" href="index.html">Antigone</a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="site-nav" id="site-nav" aria-label="Primary">
-      <ul>
-        <li><a href="index.html"__CUR_HOME__>Project</a></li>
-        <li><a href="consortium.html"__CUR_CONS__>Consortium</a></li>
-        <li><a href="people.html"__CUR_PEOP__>People</a></li>
-        <li><a href="projects.html"__CUR_PROJ__>Projects</a></li>
-        <li><a href="tools.html"__CUR_TOOL__>Research tools</a></li>
-        <li><a href="publications.html"__CUR_PUBS__>Publications</a></li>
-        <li><a href="media.html"__CUR_MEDI__>Media</a></li>
-        <li><a class="is-private" href="datasets.html"__CUR_DATA__>Datasets</a></li>
-      </ul>
-    </nav>
-    <div data-auth-slot></div>
   </div>
-</header>
 
+  <nav class="site-nav" id="site-nav" aria-label="Primary">
+    <ul>
+      <li><a href="index.html"__CUR_HOME__>Project</a></li>
+      <li><a href="consortium.html"__CUR_CONS__>Consortium</a></li>
+      <li><a href="people.html"__CUR_PEOP__>People</a></li>
+      <li><a href="projects.html"__CUR_PROJ__>Projects</a></li>
+      <li><a href="tools.html"__CUR_TOOL__>Research tools</a></li>
+      <li><a href="publications.html"__CUR_PUBS__>Publications</a></li>
+      <li><a href="media.html"__CUR_MEDI__>Media</a></li>
+      <li><a class="is-private" href="datasets.html"__CUR_DATA__>Datasets</a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar__auth" data-auth-slot></div>
+</aside>
+
+<div class="canvas">
 <main id="main">

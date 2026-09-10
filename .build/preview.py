@@ -73,12 +73,13 @@ def relink(html):
 # --- header and footer, stripped of the build placeholders -------------------
 
 head = read(".build/head.tpl")
-header = head[head.index("<header"):head.index("<main")]
+header = head[head.index('<aside class="sidebar">'):head.index('<main id="main">')]
 header = re.sub(r"__CUR_[A-Z]+__", "", header)
 header = relink(header)
 
 foot = read(".build/foot.tpl")
 footer = foot[foot.index("<footer"):foot.index("</footer>") + len("</footer>")]
+footer = footer + "\n</div>"
 footer = relink(footer)
 
 # --- page bodies -------------------------------------------------------------

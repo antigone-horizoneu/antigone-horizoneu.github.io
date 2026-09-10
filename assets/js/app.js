@@ -212,7 +212,7 @@
       "  <p>" + esc(schema.empty) + "</p>" +
       (signedIn ? "" :
         '  <p style="margin-top:.75rem;font-size:.9rem">Consortium members can sign in to see and add material before it is published.</p>' +
-        '  <button class="btn btn--ghost" type="button" data-signin-trigger="signin">Members sign in</button>') +
+        '  <button class="btn btn--ghost" type="button" data-signin-trigger="signin">Log in</button>') +
       "</div>"
     );
   }

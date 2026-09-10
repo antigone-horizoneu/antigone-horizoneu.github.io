@@ -5,7 +5,7 @@
     <div class="footer-grid">
       <div>
         <h3>ANTIGONE</h3>
-        <p style="margin:0;max-width:40ch">from ANTagonIsm to aGOnism iN digital Ecosystems. A Horizon Europe research and innovation action on freedom of expression, disinformation and democratic disagreement.</p>
+        <p style="margin:0;max-width:40ch">A Horizon Europe research and innovation action on freedom of expression, disinformation and democratic disagreement.</p>
       </div>
       <div>
         <h3>Sections</h3>
@@ -27,7 +27,7 @@
           <li><a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/projects-details/43108390/101287848/HORIZON" target="_blank" rel="noopener">EU Funding &amp; Tenders Portal</a></li>
           <li><a href="https://www.vub.be/nl" target="_blank" rel="noopener">Vrije Universiteit Brussel</a></li>
           <li><a href="https://github.com/antigone-horizoneu" target="_blank" rel="noopener">GitHub organisation</a></li>
-          <li><a href="#" data-signin-trigger="signin">Members sign in</a></li>
+          <li><a href="#" data-signin-trigger="signin">Log in</a></li>
         </ul>
       </div>
     </div>
@@ -40,6 +40,7 @@
     <p class="colophon">&copy; 2026 ANTIGONE consortium &middot; Coordinated by Vrije Universiteit Brussel</p>
   </div>
 </footer>
+</div>
 
 <script src="assets/js/config.js"></script>
 <script src="assets/js/gh.js"></script>

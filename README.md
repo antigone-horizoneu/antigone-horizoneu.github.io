@@ -1,7 +1,6 @@
 # ANTIGONE — project website
 
-Static site for the Horizon Europe project **ANTIGONE** (*from ANTagonIsm to
-aGOnism iN digital Ecosystems*, grant agreement 101287848), coordinated by the
+Static site for the Horizon Europe project **ANTIGONE** (*from AntagonIsm to Agonism in Digital Ecosystems*, grant agreement 101287848), coordinated by the
 Vrije Universiteit Brussel.
 
 It runs on GitHub Pages with no server and no build step. Open `index.html`
