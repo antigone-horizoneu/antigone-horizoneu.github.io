@@ -660,7 +660,13 @@ dialog.modal::backdrop { background: rgba(25,21,16,.42); backdrop-filter: blur(2
 
 /* ---------- Inline editing ---------------------------------------------- */
 
-[data-editable].is-editable { position: relative; outline: 1px dashed var(--rule); outline-offset: .7rem; border-radius: 2px; }
+[data-editable].is-editable {
+  position: relative;
+  outline: 1px dashed var(--rule); outline-offset: .7rem;
+  border-radius: 2px;
+  transition: outline-color .15s ease, background-color .15s ease;
+}
+[data-editable].is-editable:hover { outline-color: var(--ink-faint); }
 [data-editable].is-editable::after {
   content: "Edit";
   position: absolute; top: -.4rem; right: -.4rem;
@@ -669,7 +675,14 @@ dialog.modal::backdrop { background: rgba(25,21,16,.42); backdrop-filter: blur(2
   opacity: 0; transition: opacity .15s ease; pointer-events: none;
 }
 [data-editable].is-editable:hover::after { opacity: 1; }
-[data-editable].is-editing { outline: 2px solid var(--accent); background: #fff; }
+[data-editable].is-editable:focus {
+  outline: 2px solid var(--accent);
+  background: #fff;
+}
+[data-editable].is-dirty { outline: 1px solid var(--accent); }
+[data-editable].is-dirty::after,
+[data-editable].is-editable:focus::after { opacity: 1; }
+[data-editable].is-dirty::after { content: "Unsaved"; background: var(--accent); }
 
 .edit-toolbar {
   position: fixed; left: 50%; transform: translateX(-50%);
@@ -681,6 +694,7 @@ dialog.modal::backdrop { background: rgba(25,21,16,.42); backdrop-filter: blur(2
   font-family: var(--font-head); font-size: .78rem;
 }
 .edit-toolbar .btn { border-color: rgba(255,255,255,.25); background: transparent; color: var(--paper); }
+.edit-toolbar .btn[disabled] { opacity: .4; }
 .edit-toolbar .btn:hover { background: var(--accent); border-color: var(--accent); }
 .edit-toolbar[hidden] { display: none !important; }
 

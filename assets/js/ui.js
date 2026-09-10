@@ -217,75 +217,126 @@
 
   /* --- inline editing of site copy --------------------------------------- */
 
+  /* Editing is a session, not one block at a time. Every editable block on the
+     page is live at once; the caret moves between them like any document, and
+     one save commits whatever changed. */
+
   var toolbar = null;
-  var editing = null;
+  var originals = {};
+  var dirty = {};
+  var editingOn = false;
+
+  function dirtyKeys() { return Object.keys(dirty); }
+
+  function refreshToolbar() {
+    if (!toolbar) return;
+    var n = dirtyKeys().length;
+    toolbar.querySelector("[data-label]").textContent =
+      n === 0 ? "Editing. Click any text to change it."
+              : n === 1 ? "1 block changed"
+                        : n + " blocks changed";
+    toolbar.querySelector("[data-save]").disabled = n === 0;
+    toolbar.querySelector("[data-cancel]").disabled = n === 0;
+  }
 
   function ensureToolbar() {
     if (toolbar) return toolbar;
     toolbar = h(
       '<div class="edit-toolbar" hidden>' +
-      '  <span data-label>Editing</span>' +
-      '  <button class="btn btn--small" type="button" data-save>Save</button>' +
-      '  <button class="btn btn--small" type="button" data-cancel>Cancel</button>' +
+      '  <span data-label></span>' +
+      '  <button class="btn btn--small" type="button" data-save>Save changes</button>' +
+      '  <button class="btn btn--small" type="button" data-cancel>Discard</button>' +
       '</div>'
     );
     document.body.appendChild(toolbar);
-    toolbar.querySelector("[data-cancel]").addEventListener("click", stopEditing);
-    toolbar.querySelector("[data-save]").addEventListener("click", saveEditing);
+    toolbar.querySelector("[data-cancel]").addEventListener("click", discardEdits);
+    toolbar.querySelector("[data-save]").addEventListener("click", saveEdits);
     return toolbar;
   }
 
-  function startEditing(el) {
-    if (editing) stopEditing();
-    editing = { el: el, original: el.innerHTML };
-    el.setAttribute("contenteditable", "true");
-    el.classList.add("is-editing");
-    el.focus();
-    var tb = ensureToolbar();
-    tb.querySelector("[data-label]").textContent = "Editing “" + el.dataset.editable + "”";
-    tb.hidden = false;
-  }
-
-  function stopEditing() {
-    if (!editing) return;
-    editing.el.innerHTML = editing.original;
-    editing.el.removeAttribute("contenteditable");
-    editing.el.classList.remove("is-editing");
-    editing = null;
-    if (toolbar) toolbar.hidden = true;
-  }
-
-  function saveEditing() {
-    if (!editing) return;
-    var el = editing.el;
+  function markDirty(el) {
     var key = el.dataset.editable;
-    var html = el.innerHTML.trim();
+    var now = el.innerHTML.trim();
+    if (now === (originals[key] || "").trim()) {
+      delete dirty[key];
+      el.classList.remove("is-dirty");
+    } else {
+      dirty[key] = now;
+      el.classList.add("is-dirty");
+    }
+    refreshToolbar();
+  }
+
+  function discardEdits() {
+    if (!dirtyKeys().length) return;
+    if (!window.confirm("Discard every unsaved change on this page?")) return;
+    document.querySelectorAll("[data-editable]").forEach(function (el) {
+      var key = el.dataset.editable;
+      if (key in dirty) {
+        el.innerHTML = originals[key];
+        el.classList.remove("is-dirty");
+      }
+    });
+    dirty = {};
+    refreshToolbar();
+  }
+
+  function saveEdits() {
+    var keys = dirtyKeys();
+    if (!keys.length) return;
+    var pending = {};
+    keys.forEach(function (k) { pending[k] = dirty[k]; });
+
     var btn = toolbar.querySelector("[data-save]");
     btn.disabled = true;
     btn.textContent = "Saving…";
 
-    A.store.saveBlock(key, html).then(function () {
-      el.removeAttribute("contenteditable");
-      el.classList.remove("is-editing");
-      editing = null;
-      toolbar.hidden = true;
-      ui.flash("Saved. GitHub Pages usually republishes within a minute.", "ok");
+    A.store.saveBlocks(pending).then(function () {
+      keys.forEach(function (k) {
+        originals[k] = pending[k];
+        delete dirty[k];
+      });
+      document.querySelectorAll("[data-editable].is-dirty").forEach(function (el) {
+        if (!(el.dataset.editable in dirty)) el.classList.remove("is-dirty");
+      });
+      ui.flash(
+        (keys.length === 1 ? "Saved 1 block." : "Saved " + keys.length + " blocks.") +
+        " GitHub Pages usually republishes within a minute.", "ok");
     }).catch(function (err) {
       ui.flash(err.message || "Could not save.", "error");
     }).then(function () {
-      btn.disabled = false;
-      btn.textContent = "Save";
+      btn.textContent = "Save changes";
+      refreshToolbar();
     });
   }
 
   function enableEditing() {
-    document.querySelectorAll("[data-editable]").forEach(function (el) {
+    if (editingOn) return;
+    editingOn = true;
+
+    var nodes = document.querySelectorAll("[data-editable]");
+    if (!nodes.length) return;
+
+    nodes.forEach(function (el) {
+      originals[el.dataset.editable] = el.innerHTML;
       el.classList.add("is-editable");
+      el.setAttribute("contenteditable", "true");
+      el.setAttribute("spellcheck", "true");
+      el.addEventListener("input", function () { markDirty(el); });
+      /* A link inside editable text would otherwise swallow the click. */
       el.addEventListener("click", function (ev) {
-        if (editing) return;
-        if (ev.target.closest("a")) return;
-        startEditing(el);
+        var a = ev.target.closest("a");
+        if (a && !ev.metaKey && !ev.ctrlKey) ev.preventDefault();
       });
+    });
+
+    ensureToolbar().hidden = false;
+    refreshToolbar();
+
+    window.addEventListener("beforeunload", function (ev) {
+      if (!dirtyKeys().length) return;
+      ev.preventDefault();
+      ev.returnValue = "";
     });
   }
 
@@ -344,8 +395,9 @@
       if (state.role === "editor" && A.auth.canPublish()) enableEditing();
     });
 
-    applyBlocks();
-    return A.auth.restore();
+    /* The published copy has to be in place before editing captures its
+       originals, or Discard would restore the copy shipped with the page. */
+    return applyBlocks().then(function () { return A.auth.restore(); });
   };
 
   A.ui = ui;

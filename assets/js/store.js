@@ -196,7 +196,11 @@
         .then(function (d) { return (d && d.blocks) || {}; });
     },
 
-    saveBlock: function (key, html) {
+    /* Every changed block goes in one commit, so an editing session leaves a
+       single entry in the history rather than one per paragraph. */
+    saveBlocks: function (map) {
+      var keys = Object.keys(map);
+      if (!keys.length) return Promise.resolve();
       if (!A.auth.canPublish()) {
         return Promise.reject(new Error("Editing site text requires write access to the public repository."));
       }
@@ -205,14 +209,23 @@
         var data = { updated: today(), blocks: {} };
         if (f) { try { data = JSON.parse(f.text); } catch (e) {} }
         if (!data.blocks) data.blocks = {};
-        data.blocks[key] = html;
+        keys.forEach(function (k) { data.blocks[k] = map[k]; });
         data.updated = today();
+        var msg = keys.length === 1
+          ? "Edit site text: " + keys[0]
+          : "Edit site text: " + keys.length + " blocks";
         return gh.putFile(
           cfg.org, cfg.publicRepo, "data/pages.json",
           JSON.stringify(data, null, 2) + "\n",
-          "Edit site text: " + key, cfg.branch, f && f.sha
+          msg, cfg.branch, f && f.sha
         );
       });
+    },
+
+    saveBlock: function (key, html) {
+      var one = {};
+      one[key] = html;
+      return A.store.saveBlocks(one);
     },
 
     /* --- reference data -------------------------------------------------- */
