@@ -1,4 +1,6 @@
 {
   "updated": "2026-09-10",
-  "blocks": {}
+  "blocks": {
+    "home.description": "<p>ANTIGONE approaches the democratic tension between freedom of expression and the fight against disinformation as a deeper question of how disagreement is institutionally and technologically enabled.</p>\n\n      <p>The project hypothesizes that antagonism in online discourse often stems not from extreme views alone, but from a misalignment between political expression and the institutional or technical conditions through which it is processed. It operationalizes the concept of <em>agonistic democracy</em>, emphasizing the need for digital environments that can mitigate harmful content, but also foster legitimate forms of disagreement.</p>\n\n      <p>To this end, the project develops theoretical and practical tools to distinguish harmful disinformation from necessary democratic contestation, and to create digital ecosystems that accommodate disagreement without leading to antagonism or symbolic exclusion.</p>"
+  }
 }
