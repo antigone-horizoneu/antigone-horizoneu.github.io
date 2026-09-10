@@ -15,7 +15,7 @@ build_page() {
   head=$(cat .build/head.tpl)
 
   # active nav marker
-  for k in HOME CONS PEOP PROJ TOOL PUBS MEDI DATA; do
+  for k in HOME CONS PEOP PROJ TOOL PUBS MEDI EVEN DATA; do
     if [[ "$k" == "$cur" ]]; then
       head=${head//__CUR_${k}__/ aria-current=\"page\"}
     else
@@ -40,5 +40,6 @@ build_page projects     projects.html     "Projects — ANTIGONE" "Work packages
 build_page tools        tools.html        "Research tools — ANTIGONE" "Software, instruments and methods built or adapted by the ANTIGONE consortium." TOOL
 build_page publications publications.html "Publications — ANTIGONE" "Articles, chapters, reports and deliverables from the ANTIGONE project." PUBS
 build_page media        media.html        "Media — ANTIGONE" "Press coverage, interviews and public appearances." MEDI
+build_page events       events.html       "Events — ANTIGONE" "Conferences, workshops and panels run or attended by the ANTIGONE consortium." EVEN
 build_page datasets     datasets.html     "Datasets — ANTIGONE" "Datasets produced and curated by the ANTIGONE consortium." DATA
 build_page notfound     404.html          "Page not found — ANTIGONE" "That page does not exist." NONE

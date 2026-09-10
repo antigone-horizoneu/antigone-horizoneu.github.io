@@ -30,6 +30,7 @@
       <li><a href="tools.html"__CUR_TOOL__>Research tools</a></li>
       <li><a href="publications.html"__CUR_PUBS__>Publications</a></li>
       <li><a href="media.html"__CUR_MEDI__>Media</a></li>
+      <li><a href="events.html"__CUR_EVEN__>Events</a></li>
       <li><a class="is-private" href="datasets.html"__CUR_DATA__>Datasets</a></li>
     </ul>
   </nav>

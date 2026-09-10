@@ -24,6 +24,7 @@ PAGES = [
     ("tools", "Research tools"),
     ("publications", "Publications"),
     ("media", "Media"),
+    ("events", "Events"),
     ("datasets", "Datasets"),
 ]
 
@@ -93,7 +94,7 @@ for slug, _label in PAGES:
 
 inline = {}
 for name in ["site", "consortium", "pages", "people", "projects", "tools",
-             "publications", "media", "datasets"]:
+             "publications", "media", "events", "datasets"]:
     inline[name] = json.loads(read("data/%s.json" % name))
 
 # --- assemble ----------------------------------------------------------------

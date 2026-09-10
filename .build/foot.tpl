@@ -17,6 +17,7 @@
           <li><a href="tools.html">Research tools</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="media.html">Media</a></li>
+          <li><a href="events.html">Events</a></li>
           <li><a href="datasets.html">Datasets</a></li>
         </ul>
       </div>

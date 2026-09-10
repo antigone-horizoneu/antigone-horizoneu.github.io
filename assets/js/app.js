@@ -58,6 +58,19 @@
         { name: "date", label: "Date", type: "date" }
       ]
     },
+    events: {
+      one: "event", many: "Events",
+      empty: "Conferences, workshops, panels and co-creation sessions will be listed here.",
+      fields: [
+        { name: "title", label: "Event name", required: true },
+        { name: "kind", label: "Type", placeholder: "e.g. conference, workshop, panel, co-creation session" },
+        { name: "description", label: "Description", type: "textarea" },
+        { name: "venue", label: "Host or organiser" },
+        { name: "location", label: "Location", placeholder: "e.g. Brussels, Belgium — or online" },
+        { name: "url", label: "Link", type: "url" },
+        { name: "date", label: "Date", type: "date" }
+      ]
+    },
     datasets: {
       one: "dataset", many: "Datasets",
       empty: "Datasets produced or curated by the consortium will be listed here.",
@@ -150,6 +163,7 @@
     if (item.kind) meta.push(esc(item.kind));
     if (item.venue) meta.push(esc(item.venue));
     if (item.outlet) meta.push(esc(item.outlet));
+    if (item.location) meta.push(esc(item.location));
     if (item.lead) meta.push(esc(item.lead));
     if (item.access) meta.push("Access: " + esc(item.access));
     if (item.date) meta.push(ui.fmtDate(item.date));

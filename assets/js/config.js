@@ -20,7 +20,7 @@ window.ANTIGONE.config = {
   privateDataDir: "data",
 
   /* Collections managed by the site. */
-  collections: ["people", "projects", "tools", "publications", "media", "datasets"],
+  collections: ["people", "projects", "tools", "publications", "media", "events", "datasets"],
 
   /* Where "Request access" sends people. */
   accessRequestRepo: "antigone-horizoneu/antigone-horizoneu.github.io",
