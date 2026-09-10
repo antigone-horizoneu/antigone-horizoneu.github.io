@@ -1,28 +1,100 @@
 /* ==========================================================================
    ANTIGONE — site stylesheet
-   Headings: Test National (Klim trial)   Body: Otto (trial)
-   Drop the trial files into assets/fonts/ — see assets/fonts/README.md
+   Headings: Test National (Klim trial)   Body: ABC Otto (Dinamo trial)
+   Both are trial licences — see assets/fonts/README.md
    ========================================================================== */
 
 /* ---------- Fonts -------------------------------------------------------- */
 
 @font-face {
   font-family: "National";
-  src: url("../fonts/National-Regular.woff2") format("woff2"),
-       url("../fonts/National-Regular.woff") format("woff");
+  src: url("../fonts/National-Thin.woff2") format("woff2");
+  font-weight: 100; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-ThinItalic.woff2") format("woff2");
+  font-weight: 100; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-Light.woff2") format("woff2");
+  font-weight: 200; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-LightItalic.woff2") format("woff2");
+  font-weight: 200; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-Book.woff2") format("woff2");
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-BookItalic.woff2") format("woff2");
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-Regular.woff2") format("woff2");
   font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: "National";
-  src: url("../fonts/National-Medium.woff2") format("woff2"),
-       url("../fonts/National-Medium.woff") format("woff");
+  src: url("../fonts/National-RegularItalic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-Medium.woff2") format("woff2");
   font-weight: 500; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: "National";
-  src: url("../fonts/National-Bold.woff2") format("woff2"),
-       url("../fonts/National-Bold.woff") format("woff");
+  src: url("../fonts/National-MediumItalic.woff2") format("woff2");
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-Semibold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-SemiboldItalic.woff2") format("woff2");
+  font-weight: 600; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-Bold.woff2") format("woff2");
   font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-BoldItalic.woff2") format("woff2");
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-Extrabold.woff2") format("woff2");
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-ExtraboldItalic.woff2") format("woff2");
+  font-weight: 800; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-Black.woff2") format("woff2");
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "National";
+  src: url("../fonts/National-BlackItalic.woff2") format("woff2");
+  font-weight: 900; font-style: italic; font-display: swap;
 }
 @font-face {
   font-family: "Otto";
