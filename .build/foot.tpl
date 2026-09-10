@@ -42,11 +42,11 @@
 </footer>
 </div>
 
-<script src="assets/js/config.js"></script>
-<script src="assets/js/gh.js"></script>
-<script src="assets/js/auth.js"></script>
-<script src="assets/js/store.js"></script>
-<script src="assets/js/ui.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/config.js?v=__ASSETV__"></script>
+<script src="assets/js/gh.js?v=__ASSETV__"></script>
+<script src="assets/js/auth.js?v=__ASSETV__"></script>
+<script src="assets/js/store.js?v=__ASSETV__"></script>
+<script src="assets/js/ui.js?v=__ASSETV__"></script>
+<script src="assets/js/app.js?v=__ASSETV__"></script>
 </body>
 </html>

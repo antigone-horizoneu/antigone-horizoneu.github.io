@@ -247,7 +247,7 @@ main { flex: 1 0 auto; }
   border-bottom: 1px solid var(--rule);
 }
 .sidebar__top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.sidebar__auth { display: flex; flex-wrap: wrap; gap: .5rem; }
+.sidebar__auth { display: flex; flex-wrap: wrap; gap: .5rem; min-width: 0; }
 
 .wordmark {
   font-family: var(--font-head);
@@ -318,13 +318,26 @@ main { flex: 1 0 auto; }
     padding-block: clamp(1.75rem, 3.5vw, 2.75rem);
     gap: 2.5rem;
   }
-  .sidebar__auth { margin-top: auto; flex-direction: column; align-items: flex-start; }
+  .sidebar__auth { margin-top: auto; flex-direction: column; align-items: flex-start; width: 100%; }
+  .sidebar__auth .auth-chip {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .5rem;
+    width: 100%;
+  }
+  .sidebar__auth .auth-chip__avatar { grid-column: 1; grid-row: 1; }
+  .sidebar__auth .auth-chip__name {
+    grid-column: 2; grid-row: 1; align-self: center;
+    overflow-wrap: anywhere;
+  }
+  .sidebar__auth .auth-chip__role,
+  .sidebar__auth .auth-chip [data-signout] { grid-column: 1 / -1; justify-self: start; }
   .nav-toggle { display: none; }
 }
 
 /* ---------- Auth chip ---------------------------------------------------- */
 
-.auth-chip { display: flex; align-items: center; gap: .5rem; }
+.auth-chip { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
 .auth-chip__avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--paper-sunk); }
 .auth-chip__name { font-family: var(--font-head); font-size: .8rem; }
 .auth-chip__role {

@@ -3,6 +3,12 @@
 set -e
 cd "${0:A:h}/.."
 
+# A short digest of the stylesheet and scripts. It changes whenever they do,
+# which busts the browser cache; it stays put when they don't, so the files
+# keep being served from cache between releases.
+ASSETV=$(cat assets/css/site.css assets/js/*.js | shasum | cut -c1-10)
+print "  asset version $ASSETV"
+
 build_page() {
   local slug="$1" out="$2" title="$3" desc="$4" cur="$5"
   local tmp head
@@ -16,10 +22,14 @@ build_page() {
       head=${head//__CUR_${k}__/}
     fi
   done
+  head=${head//__ASSETV__/$ASSETV}
   head=${head//__TITLE__/$title}
   head=${head//__DESC__/$desc}
 
-  { print -r -- "$head"; cat ".build/body-$slug.html"; cat .build/foot.tpl; } > "$out"
+  { print -r -- "$head"
+    cat ".build/body-$slug.html"
+    sed "s/__ASSETV__/$ASSETV/g" .build/foot.tpl
+  } > "$out"
   print "  wrote $out"
 }
 

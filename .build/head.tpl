@@ -10,7 +10,7 @@
 <meta property="og:description" content="__DESC__">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v=__ASSETV__">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
