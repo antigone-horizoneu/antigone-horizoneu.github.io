@@ -27,7 +27,7 @@
           <li><a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/projects-details/43108390/101287848/HORIZON" target="_blank" rel="noopener">EU Funding &amp; Tenders Portal</a></li>
           <li><a href="https://www.vub.be/nl" target="_blank" rel="noopener">Vrije Universiteit Brussel</a></li>
           <li><a href="https://github.com/antigone-horizoneu" target="_blank" rel="noopener">GitHub organisation</a></li>
-          <li><a href="#" data-signin-trigger="signin">Log in</a></li>
+          <li><a href="#" data-signin-trigger="signin">Log in to edit</a></li>
         </ul>
       </div>
     </div>

@@ -318,7 +318,8 @@ main { flex: 1 0 auto; }
     padding-block: clamp(1.75rem, 3.5vw, 2.75rem);
     gap: 2.5rem;
   }
-  .sidebar__auth { margin-top: auto; flex-direction: column; align-items: flex-start; width: 100%; }
+  .sidebar__auth { margin-top: auto; flex-direction: column; align-items: stretch; width: 100%; }
+  .sidebar__auth .btn--cta { justify-content: center; }
   .sidebar__auth .auth-chip {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
@@ -362,6 +363,15 @@ main { flex: 1 0 auto; }
 .btn--ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
 .btn--ghost:hover { background: var(--paper-sunk); color: var(--ink); border-color: var(--ink-faint); }
 .btn--small { font-size: .72rem; padding: .38rem .6rem; }
+.btn--cta {
+  font-size: .88rem;
+  letter-spacing: .03em;
+  padding: .7rem 1.05rem;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn--cta:hover { background: var(--accent-dim); border-color: var(--accent-dim); }
 .btn--danger { background: transparent; color: var(--accent); border-color: var(--accent-wash); }
 .btn--danger:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .btn[disabled] { opacity: .45; cursor: not-allowed; }
